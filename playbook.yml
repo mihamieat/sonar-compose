@@ -1,0 +1,15 @@
+- name: Deploy SonarQube with Docker Compose
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Clone the Git repository
+      ansible.builtin.git:
+        repo: https://github.com/mihamieat/sonar-compose.git
+        dest: ~/sonar-compose
+        version: develop
+
+    - name: Ensure Docker Compose is running and apply if docker-compose has changed
+      community.docker.docker_compose:
+        project_src: ~/sonar-compose
+        state: present
+        restarted: true
