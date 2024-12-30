@@ -7,6 +7,10 @@ services:
       SONAR_JDBC_URL: jdbc:postgresql://sonar_db:5432/sonar
       SONAR_JDBC_USERNAME: autom_arch
       SONAR_JDBC_PASSWORD: arch1es
+      SONAR_JDBC_MAXACTIVE: 50
+      SONAR_JDBC_MAXIDLE: 10
+      SONAR_JDBC_MINIDLE: 5
+      SONAR_JDBC_CONNECTIONTESTQUERY: SELECT 1
     ports:
       - "9001:9000"
     volumes:
